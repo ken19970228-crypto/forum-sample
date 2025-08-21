@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+header{
+	width: 100%;
+	background-color: lightblue;
+	display: grid;
+	grid-template-areas: ". pagelist .";
+	grid-template-columns: repeat(3,1fr);
+}
+
+#pages{
+	grid-area: pagelist;
+	
+}
+
+#pagelist{
+	list-style: none;
+	display: flex;
+	padding: 10px;
+}
+
+li{
+	padding: 10px;
+	flex-grow: 1;
+}

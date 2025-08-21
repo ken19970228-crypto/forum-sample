@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>会員登録：入力画面</title>
+	<link th:href="@{/css/signup/input.css}" rel="stylesheet">
+</head>
+<body>
+	<header th:replace="~{fragments/header :: headerFragments}"></header>
+	
+	<main>
+		<fieldset>
+			<legend>
+				<h1>会員登録</h1>
+			</legend>
+			<form>
+				<table>
+					<tr>
+						<th>
+							<label for="email">メールアドレス：</label>
+						</th>
+						<td>
+							<input type="email" name="email" th:value="${email}" required>
+						</td>
+					</tr>
+					<tr><th colspan="2" class="errorView"><span class="error" th:text="${email_error}"></span></th></tr>
+					<tr>
+						<th>
+							<label for="nickname">ニックネーム：</label>
+						</th>
+						<td>
+							<input type="text" name="nickname" th:value="${nickname}" required>
+						</td>
+					</tr>
+					<tr><th colspan="2" class="errorView"><span class="error" th:text="${nickname_error}"></span></th></tr>
+					<tr>
+						<th>
+							<label for="password">パスワード：</label>
+						</th>
+						<td>
+							<input type="text" name="password" th:value="${password}" required>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label for="password_confirm">パスワード（確認）：</label>
+						</th>
+						<td>
+							<input type="text" name="password_confirm" required>
+						</td>
+					</tr>
+					<tr><th colspan="2" class="errorView"><span class="error" th:text="${password_error}"></span></th></tr>
+					<tr id="button">
+						<td>
+							<input type="submit" value="確認" formmethod="post" formaction="/signup/confirm">
+						</td>
+						<td>
+							<input type="submit" value="キャンセル" formmethod="get" formaction="/signup/cancel" formnovalidate>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</fieldset>
+		
+		
+	</main>
+	
+	
+	<footer th:replace="~{fragments/footer :: footerFragments}"></footer>
+</body>
+</html>
