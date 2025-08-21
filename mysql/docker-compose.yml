@@ -1,0 +1,12 @@
+services:
+  mysql:
+    ports:
+      - "3306:3306"
+    image: mysql:8.1
+    container_name: db-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: test_password
+      MYSQL_DATABASE: forum
+      TZ: Asia/Tokyo
