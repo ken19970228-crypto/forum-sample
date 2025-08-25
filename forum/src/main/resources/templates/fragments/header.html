@@ -12,6 +12,10 @@
 				<li><a href="/signup/">会員登録</a></li>
 			</ul>
 		</nav>
+		<div id="userInfo" th:if="${loginUser.isLogin()}">
+			<h4>メールアドレス：<span th:text="${loginUser.email}"></span></h4>
+			<h4>ニックネーム：<span th:text="${loginUser.nickname}"></span></h4>
+		</div>
 	</header>
 </body>
 </html>

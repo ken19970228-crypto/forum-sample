@@ -5,23 +5,22 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SignupErrorMessage implements ErrorMessage {
+public class LoginErrorMessage implements ErrorMessage {
 	private String email;
-	private String nickname;
 	private String password;
+	private String certification;
 	
-	public SignupErrorMessage() {
+	public LoginErrorMessage() {
 		email = "";
-		nickname = "";
 		password = "";
+		certification = "";
 	}
 	
 	@Override
 	public boolean hasError() {
 		if(email.equals(null))email="";
-		if(nickname.equals(null))nickname="";
 		if(password.equals(null))password="";
-		return !(email + nickname + password).equals("");
+		if(certification.equals(null))certification="";
+		return !(email + password + certification).equals("");
 	}
-
 }

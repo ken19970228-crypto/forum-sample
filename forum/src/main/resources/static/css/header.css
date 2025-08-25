@@ -4,7 +4,7 @@ header{
 	width: 100%;
 	background-color: lightblue;
 	display: grid;
-	grid-template-areas: ". pagelist .";
+	grid-template-areas: ". pagelist userInfo";
 	grid-template-columns: repeat(3,1fr);
 }
 
@@ -22,4 +22,8 @@ header{
 li{
 	padding: 10px;
 	flex-grow: 1;
+}
+
+#userInfo{
+	grid-area: userInfo;
 }
