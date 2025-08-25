@@ -32,21 +32,21 @@ public class SignupService {
 		SignupErrorMessage errorMessage = new SignupErrorMessage();
 		// メールアドレスのチェック
 		try {
-			validationService.ValidatEmail(data.getEmail());
+			validationService.validatEmail(data.getEmail());
 		} catch (Exception e) {
 			errorMessage.setEmail(e.getMessage());
 		}
 		
 		// ニックネームのチェック
 		try {
-			validationService.ValidationNickname(data.getNickname());
+			validationService.validationNickname(data.getNickname());
 		} catch (Exception e) {
 			errorMessage.setNickname(e.getMessage());
 		}
 		
 		// パスワードのチェック
 		try {
-			validationService.ValidationPassword(data.getPassword(), data.getPasswrodConfirm());
+			validationService.validationPassword(data.getPassword(), data.getPasswrodConfirm());
 		} catch (Exception e) {
 			errorMessage.setPassword(e.getMessage());
 		}
@@ -55,6 +55,7 @@ public class SignupService {
 	}
 	@Transactional(rollbackFor=Exception.class)
 	public void userTemporaryRegistration(SignupData data) {
+		
 		data.setPassword(encode(data.getPassword()));
 		String authenticationCode = encode(data.getEmail());
 		registerRepository.temporaryCreate(data, authenticationCode);
@@ -78,10 +79,17 @@ public class SignupService {
 			throw new Exception("認証に失敗しました。");
 		}
 	}
+	
 	public String encode(String target) {
 		Base64.Encoder encoder = Base64.getEncoder();
 		String encoded = encoder.encodeToString(target.getBytes(StandardCharsets.UTF_8));
 		return encoded;
+	}
+	
+	public String decode(String target) {
+		Base64.Decoder decoder = Base64.getDecoder();
+		String decode = new String(decoder.decode(target.getBytes(StandardCharsets.UTF_8)));
+		return decode;
 	}
 	
 	public void sendMail(SignupData data, String authenticationCode) {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/login.css}" rel="stylesheet">
+	<title>ログイン</title>
+</head>
+<body>
+	<header th:replace="~{fragments/header :: headerFragments}"></header>
+	
+	<main>
+		<fieldset>
+			<legend>
+				<h1>ログイン</h1>
+			</legend>
+			<form method="post">
+				<table>
+					<tr>
+						<th>
+							<label for="email">メールアドレス：</label>
+						</th>
+						<td>
+							<input name="email" type="email" th:value="${email}">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="error"><span th:text="${errorMessage.email}"></span></td>
+					</tr>
+					<tr>
+						<th>
+							<label for="password">パスワード：</label>
+						</th>
+						<td>
+							<input name="password" type="text">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="error"><span th:text="${errorMessage.password}"></span></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="error"><span th:text="${errorMessage.certification}"></span></td>
+					</tr>
+					<tr id="button">
+						<td>
+							<input type="submit" value="ログイン" formaction="/login/execution">
+						</td>
+						<td>
+							<input type="submit" value="キャンセル" formaction="/login/cancel">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</fieldset>
+	</main>
+	
+	<footer th:replace="~{fragments/footer :: footerFragments}"></footer>
+</body>
+</html>
