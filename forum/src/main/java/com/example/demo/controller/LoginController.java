@@ -40,6 +40,7 @@ public class LoginController {
 	// キャンセル
 	@PostMapping("/cancel")
 	public String cancelLogin() {
+		email = "";
 		return "redirect:/";
 	}
 	
@@ -50,9 +51,10 @@ public class LoginController {
 			@RequestParam("password") String password,
 			@ModelAttribute("loginUser") LoginUser loginUser) {
 		
+		loginUser.setEmail("");
+		loginUser.setNickname("");
 		this.email = email;
 		LoginErrorMessage errorMessage = loginService.checkInputData(email, password);
-		
 		if(errorMessage.hasError()) {
 			// 入力・認証にエラーがある場合はログイン画面に戻る
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
@@ -60,6 +62,7 @@ public class LoginController {
 		}else {
 			// メールアドレス・パスワードの認証に問題なかった場合はログイン情報を保持してトップページに遷移
 			loginService.login(loginUser, email);
+			this.email = "";
 			return "redirect:/";
 		}
 	}

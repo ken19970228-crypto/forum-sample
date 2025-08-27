@@ -8,8 +8,9 @@
 		<nav id="pages">
 			<ul id="pagelist">
 				<li><a href="/">トップページ</a></li>
-				<li><a href="/login/">ログイン</a></li>
-				<li><a href="/signup/">会員登録</a></li>
+				<li th:unless="${loginUser.isLogin()}"><a href="/login/">ログイン</a></li>
+				<li th:unless="${loginUser.isLogin()}"><a href="/signup/">会員登録</a></li>
+				<li th:if="${loginUser.isLogin()}"><a href="/logout">ログアウト</a></li>
 			</ul>
 		</nav>
 		<div id="userInfo" th:if="${loginUser.isLogin()}">
@@ -18,4 +19,4 @@
 		</div>
 	</header>
 </body>
-</html>
+</html>ß

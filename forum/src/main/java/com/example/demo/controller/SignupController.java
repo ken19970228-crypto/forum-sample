@@ -89,7 +89,7 @@ public class SignupController {
 			data = new SignupData();
 			return "/signup/sendMail";
 		}catch(DuplicateKeyException e) {
-			model.addAttribute("error", "パスワードまたはメールアドレスがすでに使用されています。");
+			model.addAttribute("error", "ニックネームまたはメールアドレスがすでに使用されています。");
 			model.addAttribute("data", data);
 			return "/signup/confirm";
 		}

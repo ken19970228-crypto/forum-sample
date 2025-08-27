@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,15 +17,15 @@ public class RegisterRepository {
 	}
 	// ユーザー仮登録
 	public void temporaryCreate(SignupData data, String authentication_code) {
-		String sql = "INSERT INTO temporary_users (email, nickname, password, authentication_code)"
-				+ "VALUES(?, ?, ?, ?)";
-		jdbcTemplate.update(sql, data.getEmail(), data.getNickname(), data.getPassword(), authentication_code);
+		String sql = "INSERT INTO temporary_users (email, nickname, password, authentication_code, date)"
+				+ "VALUES(?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, data.getEmail(), data.getNickname(), data.getPassword(), authentication_code, getTimeNow());
 	}
 	// ユーザー本登録
 	public void create(SignupData data) {
-		String sql = "INSERT INTO users (email, nickname, password, authority)"
-				+ "VALUES(?, ?, ?, ?)";
-		jdbcTemplate.update(sql, data.getEmail(), data.getNickname(), data.getPassword(), "user");
+		String sql = "INSERT INTO users (email, nickname, password, authority, date)"
+				+ "VALUES(?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, data.getEmail(), data.getNickname(), data.getPassword(), "user", getTimeNow());
 	}
 	// 仮登録ユーザー削除
 	public void temporaryDeleteById(int id) {
@@ -41,4 +43,8 @@ public class RegisterRepository {
 		return jdbcTemplate.queryForMap(sql, code);
 	}
 	
+	private String getTimeNow() {
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		return LocalDateTime.now().format(format);
+	}
 }
