@@ -52,6 +52,7 @@ public class LoginService {
 		Map<String, Object> user = userRepository.findByEmail(email);
 		loginUser.setEmail(user.get("email").toString());
 		loginUser.setNickname(user.get("nickname").toString());
+		loginUser.setUser_id(Integer.parseInt(user.get("user_id").toString()));
 	}
 	
 	public void passwordAuthentication(String email, String password) throws Exception {

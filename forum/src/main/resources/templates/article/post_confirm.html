@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link th:href="@{/css/article/input.css}" rel="stylesheet">
-	<title>記事投稿：入力画面</title>
+	<title>記事投稿：確認画面</title>
 </head>
 <body>
 	<header th:replace="~{fragments/header :: headerFragments}"></header>
@@ -13,20 +13,20 @@
 			<legend>
 				<h1 id="title">記事投稿</h1>
 			</legend>
+			
 			<form method="post">
+				<h2>下記内容で登録します。</h2>
 				<label for="title_input"><h2>タイトル：</h2></label>
-				<input type="text" name="title" id="title_input" th:value="${title}">
+				<input type="text" name="title" id="title_input" th:value="${title}" readonly>
 				<span><span id="title_length"></span>/300</span>
 				
 				<label for="text_input"><h2>本文：</h2></label>
-				<textarea name="text" id="text_input" rows="10" th:text="${text}"></textarea>
+				<textarea name="text" id="text_input" rows="10" th:text="${text}" readonly></textarea>
 				<span><span id="text_length"></span>/3000</span>
 				
-				<br><span class="error" th:text="${errorMessage}"></span>
-				
 				<div id="buttons">
-					<input type="submit" value="確認" formaction="/post/article_confirm">
-					<input type="submit" value="キャンセル" formmethod="get" formaction="/post/cancel">
+					<input type="submit" value="投稿" formaction="/post/article_post">
+					<input type="submit" value="戻る" formmethod="get" formaction="/post/return">
 				</div>
 			</form>
 		</fieldset>
