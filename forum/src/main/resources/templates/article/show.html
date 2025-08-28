@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/article/input.css}" rel="stylesheet">
+	<title>記事詳細画面</title>
+</head>
+<body>
+	<header th:replace="~{fragments/header :: headerFragments}"></header>
+	
+	<main>
+		<fieldset>
+			<legend>
+				<h1 id="title">記事詳細</h1>
+			</legend>
+		</fieldset>
+	</main>
+	
+	<footer th:replace="~{fragments/footer :: footerFragments}"></footer>
+	
+	<script type="module" th:src="@{/js/article/input.js}"></script>
+</body>
+</html>

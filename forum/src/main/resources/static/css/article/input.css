@@ -1,0 +1,29 @@
+@charset "UTF-8";
+@import url("../base.css");
+
+
+fieldset{
+	margin: 0;
+}
+
+form{
+	margin: 0 20%;
+	
+	input,textarea{
+		font-family: "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+		width: 100%;
+		font-size: 20px;
+	}
+	
+	textarea{
+		resize: none;
+	}
+	
+	#buttons{
+		display: flex;
+		input{
+			margin: auto;
+			width: 30%;
+		}
+	}
+}

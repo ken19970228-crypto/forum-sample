@@ -1,6 +1,6 @@
 USE forum;
 
-DROP TABLE IF EXISTS users;
+-- DROP TABLE IF EXISTS users,articles,comments;
 
 CREATE TABLE IF NOT EXISTS users (
 	user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 	date TIMESTAMP NOT NULL
 );
 
-DROP TABLE IF EXISTS temporary_users;
+-- DROP TABLE IF EXISTS temporary_users;
 
 CREATE TABLE IF NOT EXISTS temporary_users(
 	user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -22,10 +22,25 @@ CREATE TABLE IF NOT EXISTS temporary_users(
 	date TIMESTAMP NOT NULL
 );
 
+DROP TABLE IF EXISTS articles,comments;
+
 CREATE TABLE IF NOT EXISTS articles(
 	article_id BIGINT AUTO_INCREMENT PRIMARY KEY,
 	user_id BIGINT NOT NULL,
+	user_nickname VARCHAR(32) NOT NULL,
 	title VARCHAR(300) NOT NULL,
 	text VARCHAR(3000) NOT NULL,
-	date TIMESTAMP NOT NULL
+	date TIMESTAMP NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE IF NOT EXISTS comments(
+	comment_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+	article_id BIGINT NOT NULL,
+	user_id BIGINT NOT NULL,
+	user_nickname VARCHAR(32) NOT NULL,
+	text VARCHAR(300) NOT NULL,
+	date TIMESTAMP NOT NULL,
+	FOREIGN KEY (article_id) REFERENCES articles(article_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );

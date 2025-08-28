@@ -53,6 +53,7 @@ public class LoginController {
 		
 		loginUser.setEmail("");
 		loginUser.setNickname("");
+		loginUser.setUser_id(0);
 		this.email = email;
 		LoginErrorMessage errorMessage = loginService.checkInputData(email, password);
 		if(errorMessage.hasError()) {

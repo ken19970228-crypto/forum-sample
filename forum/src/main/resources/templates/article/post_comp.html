@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/article/comp.css}" rel="stylesheet">
+	<title>記事投稿：完了画面</title>
+</head>
+<body>
+	<header th:replace="~{fragments/header :: headerFragments}"></header>
+	
+	<main>
+		<fieldset>
+			<legend>
+				<h1 id="title">記事投稿</h1>
+			</legend>
+			<div id="message">
+				<h2>記事の投稿が完了しました。</h2>
+				<a th:href="@{'/article?id=' + ${articleId}}">記事へ</a>
+			</div>
+		</fieldset>
+	</main>
+	
+	<footer th:replace="~{fragments/footer :: footerFragments}"></footer>
+</body>
+</html>
