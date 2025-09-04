@@ -5,17 +5,17 @@ fieldset{
 	display: grid;
 	grid-template-areas: 
 	". postButton"
-	"article1 article2"
-	"article3 article4"
-	"article5 article6"
-	"article7 article8"
-	"article9 article10"
+	"article0 article0"
+	"article1 article1"
+	"article2 article2"
+	"article3 article3"
+	"article4 article4"
 	;
 	border: 5px double black;
 	margin: 10px 10%;
 }
 
-#title{
+#pageTitle{
 	grid-area: title;
 	padding: 15px;
 	margin: auto;
@@ -31,10 +31,72 @@ fieldset{
 	width: 100px;
 	padding: 15px;
 	margin: auto;
+	margin-right: 5px;
 	background-color: lightblue;
 	text-align: center;
 	border: thin solid black;
 }
 #postButton:hover{
 	background-color: lightslategray;
+}
+
+#article0{
+	grid-area: article0;
+}
+
+#article1{
+	grid-area: article1;
+}
+
+#article2{
+	grid-area: article2;
+}
+
+#article3{
+	grid-area: article3;
+}
+
+#article4{
+	grid-area: article4;
+}
+
+.article{
+	background-color: antiquewhite;
+	border: thin solid;
+	padding: 5px;
+	margin: 5px;
+	display: grid;
+	grid-template-areas: 
+	"title title"
+	"text text"
+	"nickname date"
+	;
+	grid-template-columns: repeat(2, 1fr);
+	.title{
+		grid-area: title;
+		font-size: x-large;
+		display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp: 1;
+	    overflow: hidden;
+	}
+	.text{
+		grid-area: text;
+		font-size: large;
+		display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp: 2;
+	    overflow: hidden;
+	    padding-left: 10px;
+	}
+	.nickname{
+		grid-area: nickname;
+	}
+	.date{
+		grid-area: date;
+	}
+}
+.article:hover{
+	background-color: lightgray;
+	cursor: pointer;
 }

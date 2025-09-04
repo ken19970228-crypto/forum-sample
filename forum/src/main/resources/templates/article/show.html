@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link th:href="@{/css/article/input.css}" rel="stylesheet">
+	<link th:href="@{/css/article/show.css}" rel="stylesheet">
 	<title>記事詳細画面</title>
 </head>
 <body>
@@ -10,14 +10,16 @@
 	
 	<main>
 		<fieldset>
-			<legend>
-				<h1 id="title">記事詳細</h1>
-			</legend>
+			<div id="article">
+				<h1 id="title" th:text="${article.title}"></h1>
+				<p id="nckname">投稿者：<span th:text="${article.user_nickname}"></span></p>
+				<p id="date">投稿日時：<span th:text="${article.date}"></span></p>
+				<span id="text" th:utext="${article.text}"></span>
+			</div>
+			
 		</fieldset>
 	</main>
 	
 	<footer th:replace="~{fragments/footer :: footerFragments}"></footer>
-	
-	<script type="module" th:src="@{/js/article/input.js}"></script>
 </body>
 </html>

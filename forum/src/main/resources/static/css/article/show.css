@@ -1,0 +1,46 @@
+@charset "UTF-8";
+@import url("../base.css");
+
+main{
+	background-color: whitesmoke;
+}
+
+fieldset{
+	background-color: whitesmoke;
+}
+
+#article{
+	width: 80%;
+	margin: 0 10%;
+	display: grid;
+	grid-template-areas: 
+	"title title"
+	"nickname ."
+	"date ."
+	"text text"
+	;
+	
+	grid-template-rows: 0.5fr repeat(2, 1) 1fr;
+}
+
+#title{
+	grid-area: title;
+	padding: 5px;
+	background-color: antiquewhite;
+}
+
+#nickname{
+	grid-area: nickname;
+}
+
+#date{
+	grid-area: date;
+}
+
+#text{
+	grid-area: text;
+	margin: 5px;
+	padding: 5px;
+	background-color: antiquewhite;
+	font-size: x-large;
+}
