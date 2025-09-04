@@ -11,12 +11,24 @@
 	<main>
 		<fieldset>
 			<legend>
-				<h1 id="title">トップページ</h1>
+				<h1 id="pageTitle">トップページ</h1>
 			</legend>
 			<a id="postButton" th:if="${loginUser.isLogin()}" href="/post/article">記事を投稿</a>
+			<th:block th:each="i : ${#numbers.sequence(0,articles.size()-1,1)}">
+				<div th:id="'article' + ${i}" class="article">
+					<span class="title">
+						#<span class="article_id" th:text="${articles.get(i).article_id}"></span>
+						<span th:text="${articles.get(i).title}"></span>
+					</span>
+					<span class="text" th:utext="${articles.get(i).text}"></span>
+					<span class="nickname">投稿者：<span th:text="${articles.get(i).user_nickname}"></span></span>
+					<span class="date">投稿日時：<span th:text="${articles.get(i).date}"></span></span>
+				</div>
+			</th:block>
 		</fieldset>
 	</main>
 	
 	<footer th:replace="~{fragments/footer :: footerFragments}"></footer>
+	<script th:src="@{/js/article/clickArticle.js}"></script>
 </body>
 </html>
